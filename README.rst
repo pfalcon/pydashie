@@ -1,3 +1,22 @@
+PyDashie port to MicroPython/Picoweb
+####################################
+
+This is quick and dirty port of PyDashie to MicroPython and Picoweb
+micro-framework. It's quick and dirty, because it doesn't create
+JavaScript/CSS bundles out of Coffee/SCSS files, but serves precreated
+bundle (as produced by original PyDashie).
+
+Fairly speaking, all this bundling-at-runtime, coffees and scsses of the
+original PyDashie aren't too clean either...
+
+This port is proof of concept, before embarking on a project to create
+a decent, unbloated web dashboard for MicroPython.
+
+To run, go to ``pydashie/`` directory and run ``micropython main_picoweb.py``
+(picoweb should be installed first of course, ``micropython -m upip picoweb``).
+
+What follows is the original PyDashie README.
+
 PyDashie
 ########
 
