@@ -25,12 +25,9 @@ class DashieSampler:
     def _send_event(self, widget_id, body):
         body['id'] = widget_id
         body['updatedAt'] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S +0000')
-        formatted_json = 'data: %s\n\n' % (json.dumps(body))
-        self._app.last_events[widget_id] = formatted_json
-        for event_queue in self._app.events_queue.values():
-            event_queue.put(formatted_json)
+        await self._app.push_event(json.dumps(body))
 
     def _sample(self):
         data = self.sample()
         if data:
-            self._send_event(self.name(), data)
+            await self._send_event(self.name(), data)
